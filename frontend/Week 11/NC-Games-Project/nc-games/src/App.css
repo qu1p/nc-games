@@ -1,0 +1,90 @@
+.App {
+  text-align: center;
+  background-color: white;
+  display: grid;
+  /* grid-template-columns: 100%;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas:
+    "header"
+    "search"; */
+  min-height: 100vh;
+}
+
+/* .search {
+  background-color: rgb(184, 167, 167);
+} */
+
+.login {
+  background-color: white;
+  width: 20%;
+  height: 10%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* .categories {
+  display: grid;
+  grid-template-rows: 100;
+} */
+
+.categoriesButtons {
+  display:flex;
+  justify-content: center;
+
+  /* grid-template-rows: 20; */
+
+  /* background-color: rgb(148, 148, 142); */
+  /* size: 5px; */
+  /* height: 30px; */
+  /* width: 30px; */
+  /* cursor: pointer; */
+}
+
+.image {
+  max-width: 300px;
+  max-height: 200px;
+}
+
+/* .review {
+  background-color: blue;
+} */
+
+.review {
+  margin: 20;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  /* border: 1px solid #333; */
+  margin-bottom: 2rem;
+}
+/* .flex div:first-child {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.flex div:last-child {
+  margin: 2rem;
+  flex: 2;
+}
+
+.flex h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  font-weight: 400;
+} */
+/* .flex p {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 400;
+} */
+
+/* .flex p:last-of-type {
+  margin-bottom: 0;
+} */
+
+/* .flex:first-of-type div:first-child {
+  background-image: url("aloe-polyphylla.jpg");
+} */
