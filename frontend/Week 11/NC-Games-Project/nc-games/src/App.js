@@ -27,14 +27,14 @@ function App() {
 
           <Categories />
           <Switch>
-            <Route exact path="/reviews/singlereview">
-              <SingleReview />
-            </Route>
             <Route exact path="/reviews">
               <Home />
             </Route>
             <Route exact path="/reviews/:category">
               <GamesForCategory />
+            </Route>
+            <Route exact path="/review/:review_id">
+              <SingleReview />
             </Route>
             <Route exact path="/NewAccount">
               <CreateAccount />

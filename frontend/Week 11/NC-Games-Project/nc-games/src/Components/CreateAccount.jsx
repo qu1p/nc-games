@@ -12,15 +12,13 @@ const CreateAccount = () => {
     const user = { username: "Test_User" };
     axios
       .post("https://ncgames-app.herokuapp.com/api/users", user)
-      .then((response)=> {
-	      console.log(response, "<<< response")
-	// (element.innerHTML = response.data.id)
+      .then((response) => {
+        // (element.innerHTML = response.data.id)
       });
   }
 
   function handleChangeEvent(event) {
     setNewUser(event.target.value);
-    console.log(newUser, "<< newUser");
   }
 
   return (

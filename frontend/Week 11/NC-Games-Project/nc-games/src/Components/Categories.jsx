@@ -14,8 +14,7 @@ const Categories = () => {
   }, []);
 
   return (
-    /*style={{marginLeft: '40%', marginTop: '60px', width: '30%'}}*/
-    <span>
+    <div>
       <ul class="categoriesButtons">
         {categories.map((category) => {
           return (
@@ -30,15 +29,9 @@ const Categories = () => {
           <button class="button">All Reviews</button>
         </Link>
       </ul>
-    </span>
+    </div>
   );
 };
 
 export default Categories;
 
-//   useEffect(() => {
-//     getUsers().then((usersFromApi) => {
-// 	//     console.log(usersFromApi)
-//       setUser(usersFromApi);
-//     });
-//   }, [user]);
