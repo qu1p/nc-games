@@ -1,20 +1,22 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getReviewByReview_Id } from "../Utils/api";
 import { useState, useEffect } from "react";
 
+
+
 const SingleReview = () => {
   const [review, setReview] = useState([]);
-  const { review_id } = useParams();
+  const [currPage, setCurrPage] = useState("")
+  const { review_id, category } = useParams();
 
   useEffect(() => {
     getReviewByReview_Id(review_id).then((review) => {
-        setReview(review)
+      setReview(review);
     });
-  },[]);
-console.log(review, "<<< review")
-
-
+  }, []);
+  console.log(review, "<<< review");
+ 
 
   return (
     <div>
@@ -25,11 +27,13 @@ console.log(review, "<<< review")
               <h3>{review.title}</h3>
               <figure className="reviewbody">
                 <p>{review.review_body}</p>
+                <Link to={`/reviews/${review.category}`}>
                 <button>Back</button>
+                </Link>
               </figure>
               <hr style={{ width: 800 }}></hr>
             </div>
-          )
+          );
         })}
       </ul>
     </div>

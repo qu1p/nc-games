@@ -19,7 +19,7 @@ const GamesForCategory = () => {
 
   return (
     <div>
-      <h1>{category.toUpperCase()} Game Reviews</h1>
+      <h1>{category.toUpperCase()} Games</h1>
       <ul>
         {reviews.map((review) => {
           return (

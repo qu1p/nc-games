@@ -26,7 +26,7 @@ const Categories = () => {
           );
         })}
         <Link to={`/reviews`}>
-          <button class="button">All Reviews</button>
+          <button class="button">All</button>
         </Link>
       </ul>
     </div>
