@@ -5,6 +5,7 @@ import { useEffect } from "react";
 const Dropdown = () => {
   const [users, setUsers] = useState([]);
   const [dropDown, setDropDown] = useState(false);
+  const [logon, setLogon] = useState(false);
 
   useEffect(() => {
     getUsers().then((users) => {
@@ -12,13 +13,20 @@ const Dropdown = () => {
     });
   }, []);
 
-  console.log(dropDown);
+  function manageLogon() {
+    setDropDown(!dropDown);
+    setLogon(!logon)
+//     return <p>Logged on as ....</p>;
+  }
+
+  
+//   {!logon ? 
 
   return (
     <div class="login">
       <button
         onClick={() => {
-          setDropDown(true);
+          setDropDown(!dropDown);
         }}
       >
         Select your login
@@ -28,14 +36,16 @@ const Dropdown = () => {
           {users.map((user) => {
             return (
               <ul key={user.username}>
-                <button>{user.username}</button>
+                <button onClick={manageLogon}>{user.username}</button>
               </ul>
             );
           })}
         </div>
       ) : null}
     </div>
-  );
+  )  
+
+	
 };
 
 export default Dropdown;

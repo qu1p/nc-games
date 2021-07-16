@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 
 
 
-const SingleReview = () => {
+const SingleReview = (props) => {
+  console.dir(props)
   const [review, setReview] = useState([]);
   const [currPage, setCurrPage] = useState("")
   const { review_id, category } = useParams();
@@ -30,9 +31,10 @@ const SingleReview = () => {
               <h3>{review.title}</h3>
               <figure className="reviewbody">
                 <p>{review.review_body}</p>
-                <Link to={`/reviews/${review.category}`}>
+            {/* Back button not working on all reviews */}
+                {/* <Link to={`/reviews/${review.category}`}>
                 <button>Back</button>
-                </Link>
+                </Link> */}
               </figure>
               <hr style={{ width: 800 }}></hr>
             </div>
