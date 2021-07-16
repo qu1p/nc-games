@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LoginCreateUser from "./Login";
+import Dropdown from "../Components/Dropdown"
 import { Link } from "react-router-dom";
 
 const Header = ({ title, user, setUser }) => {
   return (
     <div>
       <h1>{title}</h1>
-      <LoginCreateUser user={user} setUser={setUser}/>
+      <Dropdown />
     </div>
   );
 };

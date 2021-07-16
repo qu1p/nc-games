@@ -9,6 +9,7 @@ import Home from "./Components/Home";
 import GamesForCategory from "./Components/ReviewsByCategory";
 import CreateAccount from "./Components/CreateAccount";
 import SingleReview from "./Components/SingleReview"
+
 import {
   BrowserRouter as Router,
   Route,

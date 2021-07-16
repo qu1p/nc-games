@@ -15,8 +15,11 @@ const SingleReview = () => {
       setReview(review);
     });
   }, []);
-  console.log(review, "<<< review");
+  
  
+  // function goBack{
+  //   if(path===)
+  // }
 
   return (
     <div>
