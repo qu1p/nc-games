@@ -35,6 +35,7 @@ const SingleReview = (props) => {
                 {/* <Link to={`/reviews/${review.category}`}>
                 <button>Back</button>
                 </Link> */}
+                <button>Like</button><p>{review.votes}</p> 
               </figure>
               <hr style={{ width: 800 }}></hr>
             </div>

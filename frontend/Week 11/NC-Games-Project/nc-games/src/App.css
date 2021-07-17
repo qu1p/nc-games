@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   background-color: white;
-  display: grid;
+  /* display: grid; */
   /* grid-template-columns: 100%;
   grid-template-rows: min-content min-content auto;
   grid-template-areas:
@@ -10,17 +10,38 @@
   min-height: 100vh;
 }
 
-/* .search {
-  background-color: rgb(184, 167, 167);
-} */
+
 
 .login {
-  background-color: white;
+  
+  background-color: rgb(182, 81, 81);
   width: 20%;
   height: 10%;
-  position: absolute;
+  position: absolute; 
   right: 0;
   top: 0;
+}
+
+.mainLoginButtons{
+  display: inline-block;
+  background-color:blue;
+}
+
+/* .loginButtons{
+  display: inline-block; 
+  align-items: baseline;
+  direction: column;
+width: 600px;
+background-color: red;  */
+  
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* position: relative; */
+  /* min-width: 200px;
+  max-width: 600px; */
+  /* width: 10%;
+  table-layout:fixed;
 }
 
 /* .categories {
@@ -56,7 +77,8 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  /* border: 1px solid #333; */
+  /* border: 1px solid #333; 
+  border-radius: 3px; */
   margin-bottom: 2rem;
 }
 /* .flex div:first-child {

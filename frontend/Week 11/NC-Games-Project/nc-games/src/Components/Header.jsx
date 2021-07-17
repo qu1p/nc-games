@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import Dropdown from "../Components/Dropdown"
 import { Link } from "react-router-dom";
 
-const Header = ({ title, user, setUser }) => {
+const Header = ({ title, user, setUser, currentUser, setCurrentUser }) => {
   return (
     <div>
       <h1>{title}</h1>
-      <Dropdown />
+      <Dropdown currentUser={currentUser} setCurrentUser={setCurrentUser} />
     </div>
   );
 };

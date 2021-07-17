@@ -20,6 +20,7 @@ const GamesForCategory = () => {
   return (
     <div>
       <h1>{category.toUpperCase()} Games</h1>
+      <button>Sort By</button>
       <ul>
         {reviews.map((review) => {
           return (
