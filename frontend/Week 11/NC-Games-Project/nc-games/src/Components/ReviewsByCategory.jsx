@@ -7,6 +7,7 @@ import React from "react";
 const GamesForCategory = () => {
   const [reviews, setReviews] = useState([]);
   const { category } = useParams();
+  const [sorted, setSorted] = useState(false);
   const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,10 @@ const GamesForCategory = () => {
       setReviews(filteredByCategory);
     });
   }, [category]);
+
+  function sortBy(sortCriteria) {
+    
+  }
 
   return (
     <div>
@@ -30,7 +35,14 @@ const GamesForCategory = () => {
       </button>
       {dropDown ? (
         <ul>
-          <button>Date Created</button>
+          <button
+            onClick={() => {
+              setSorted(true);
+              sortBy(Date);
+            }}
+          >
+            Date Created
+          </button>
           <button>Votes</button>
         </ul>
       ) : null}

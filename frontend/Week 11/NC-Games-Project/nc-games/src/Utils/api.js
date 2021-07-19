@@ -31,6 +31,6 @@ export const getReviewByReview_Id = async (review_id) => {
   return data.review;
 };
 
-export const getReviewsByUsername = async(username) => [
-  
-]
+export const getAllSortedReviews = async () => {
+  let path = "reviews"
+}
