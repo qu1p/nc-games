@@ -25,7 +25,7 @@ const Dropdown = () => {
 
   if (!logon) {
     return (
-      <div class="MainLoginButtons">
+      <div class="select" tabindex="1">
         <button
           class="loginButtons"
           onClick={() => {
@@ -61,6 +61,7 @@ const Dropdown = () => {
         <Link to={`/${currentUser}reviews`}>
           <button>Your reviews</button>
         </Link>
+	<Link to={'/reviews'}>
         <button
           onClick={() => {
             setLogon(false);
@@ -68,6 +69,7 @@ const Dropdown = () => {
         >
           Logout
         </button>
+	</Link>
       </div>
     );
   }

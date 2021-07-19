@@ -7,6 +7,7 @@ import React from "react";
 const GamesForCategory = () => {
   const [reviews, setReviews] = useState([]);
   const { category } = useParams();
+  const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
     getReviews(category).then((reviews) => {
@@ -20,7 +21,19 @@ const GamesForCategory = () => {
   return (
     <div>
       <h1>{category.toUpperCase()} Games</h1>
-      <button>Sort By</button>
+      <button
+        onClick={() => {
+          setDropDown(!dropDown);
+        }}
+      >
+        Sort By
+      </button>
+      {dropDown ? (
+        <ul>
+          <button>Date Created</button>
+          <button>Votes</button>
+        </ul>
+      ) : null}
       <ul>
         {reviews.map((review) => {
           return (

@@ -6,6 +6,7 @@ import React from "react";
 
 const Home = () => {
   const [reviews, setReviews] = useState([]);
+  const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
     getReviews().then((reviews) => {
@@ -15,6 +16,20 @@ const Home = () => {
   return (
     <div>
       <h1>All Reviews</h1>
+      <button
+        onClick={() => {
+          setDropDown(!dropDown);
+        }}
+      >
+        Sort By
+      </button>
+      {dropDown ? (
+        <ul>
+          <button>Date Created</button>
+          <button>Votes</button>
+        </ul>
+      ) : null}
+
       <ul>
         {reviews.map((review) => {
           return (

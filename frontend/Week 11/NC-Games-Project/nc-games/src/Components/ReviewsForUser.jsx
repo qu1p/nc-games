@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getReviews } from "../Utils/api";
+import { getReviews, getReviewByReview_Id } from "../Utils/api";
 import { useContext } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUser";
 import { LogonContext } from "../Contexts/Logon";
@@ -20,6 +20,8 @@ const ReviewsForUser = () => {
     });
   }, []);
 
+
+
   console.log(logon);
   if (!logon) {
     return (
@@ -30,6 +32,7 @@ const ReviewsForUser = () => {
             return (
               <div key={review.review_id}>
                 <h3>{review.title}</h3>
+		<p>{review.review_body}</p>
                 <p>likes</p>
               </div>
             );
