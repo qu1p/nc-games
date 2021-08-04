@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 import { getUsers } from "../Utils/api";
 import { useEffect } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../Contexts/CurrentUser";
+import { LogonContext } from "../Contexts/Logon";
 
 const Dropdown = () => {
   const [users, setUsers] = useState([]);
-  const [dropDown, setDropDown] = useState(false);
-  const [logon, setLogon] = useState(false);
+  //   const [dropDown, setDropDown] = useState(false);
+  // const [logon, setLogon] = useState(false);
 
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-
+  const { logon, setLogon } = useContext(LogonContext);
   useEffect(() => {
     getUsers().then((users) => {
       setUsers(users);
@@ -18,58 +19,51 @@ const Dropdown = () => {
   }, []);
 
   function handleLogon(currentUser) {
-    setDropDown(!dropDown);
+    // setDropDown(!dropDown);
     setLogon(!logon);
     setCurrentUser(currentUser);
   }
 
   if (!logon) {
     return (
-      <div class="select" tabindex="1">
-        <button
-          class="loginButtons"
-          onClick={() => {
-            setDropDown(!dropDown);
-          }}
-        >
-          Select your login
-        </button>
-        {dropDown ? (
-          <ul>
+      <div>
+        <div class="login-dropdown">
+          <button class="login-dropbtn">Choose Login</button>
+          <div class="login-dropdown-content">
             {users.map((user) => {
               return (
-                <ul key={user.username}>
-                  <button
-                    class="loginButtons"
+                <div key={user.username}>
+                  <a
                     onClick={() => {
                       handleLogon(user.username);
                     }}
+                    href="#"
                   >
                     {user.username}
-                  </button>
-                </ul>
+                  </a>
+                </div>
               );
             })}
-          </ul>
-        ) : null}
+          </div>
+        </div>
       </div>
     );
   } else {
     return (
       <div class="login">
-        <h3>{`You are logged in as ${currentUser}`}</h3>
+        <h3>{`Logged in as ${currentUser}`}</h3>
         <Link to={`/${currentUser}reviews`}>
           <button>Your reviews</button>
         </Link>
-	<Link to={'/reviews'}>
-        <button
-          onClick={() => {
-            setLogon(false);
-          }}
-        >
-          Logout
-        </button>
-	</Link>
+        <Link to={"/reviews"}>
+          <button
+            onClick={() => {
+              setLogon(false);
+            }}
+          >
+            Logout
+          </button>
+        </Link>
       </div>
     );
   }

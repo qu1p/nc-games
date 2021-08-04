@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getCategories } from "../Utils/api";
 import { Link } from "react-router-dom";
-import Box from "@material-ui/core/Box";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -15,23 +14,25 @@ const Categories = () => {
 
   return (
     <div>
-      <ul class="categoriesButtons">
-        {categories.map((category) => {
-          return (
-            <ul key={category.slug}>
-              <Link to={`/reviews/${category.slug}`}>
-                <button class="button">{category.slug}</button>
-              </Link>
-            </ul>
-          );
-        })}
-        <Link to={`/reviews`}>
-          <button class="button">All</button>
-        </Link>
-      </ul>
+      <div class="dropdown">
+        <button class="dropbtn">Game Category</button>
+        <div class="dropdown-content">
+          {categories.map((category) => {
+            return (
+              <div key={category.slug}>
+                <Link to={`/reviews/${category.slug}`}>
+                  <a>{category.slug}</a>
+                </Link>
+              </div>
+            );
+          })}
+          <Link to={`/reviews`}>
+            <a>All</a>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Categories;
-

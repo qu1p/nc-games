@@ -4,15 +4,20 @@ import { getReviews, getReviewByReview_Id } from "../Utils/api";
 import { useContext } from "react";
 import { CurrentUserContext } from "../Contexts/CurrentUser";
 import { LogonContext } from "../Contexts/Logon";
+import AddComment from "../Components/AddComment";
 
-const ReviewsForUser = () => {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const { logon, setLogon } = useContext(LogonContext);
+import { SingleReviewContext } from "../Contexts/SingleReview";
+import CommentsForUser from "./CommentsForUser";
 
+const ReviewsForUser = (props) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  const { logon } = useContext(LogonContext);
+  const { singleReview } = useContext(SingleReviewContext);
   const [reviews, setReviews] = useState([]);
-  // console.log(currentUser.username)
+
   useEffect(() => {
     getReviews().then((reviews) => {
+      console.log(reviews, "reviews");
       const filteredByCurrentUser = reviews.filter((review) => {
         return review.owner === currentUser;
       });
@@ -20,10 +25,14 @@ const ReviewsForUser = () => {
     });
   }, []);
 
+  // const filteredReviews = reviews.map((review) => {
+  //   getReviewByReview_Id(review.review_id).then((review) => {
+  //     setReviews(review);
+  //   });
+  //     return filteredReviews
+  // });
 
-
-  console.log(logon);
-  if (!logon) {
+  if (logon) {
     return (
       <div>
         {`${currentUser} reviews`}
@@ -32,15 +41,19 @@ const ReviewsForUser = () => {
             return (
               <div key={review.review_id}>
                 <h3>{review.title}</h3>
-		<p>{review.review_body}</p>
-                <p>likes</p>
+                <p>{review.review_body}</p>
+                <CommentsForUser review_id={review.review_id}/>
+                
               </div>
             );
           })}
         </ul>
+        <AddComment currentUser={currentUser} />
       </div>
     );
-  } else {return null}
+  } else {
+    return null;
+  }
 };
 
 export default ReviewsForUser;

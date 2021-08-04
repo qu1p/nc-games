@@ -1,26 +1,24 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getReviewByReview_Id } from "../Utils/api";
-import { useState, useEffect } from "react";
-
-
+import { useState, useEffect, useContext } from "react";
+import { LogonContext } from "../Contexts/Logon";
+import IncrementCount from "../Components/IncrementCount";
 
 const SingleReview = (props) => {
-  console.dir(props)
+  console.log(props);
   const [review, setReview] = useState([]);
-  const [currPage, setCurrPage] = useState("")
+  const [currPage, setCurrPage] = useState("");
+  // const [isLoading, setIsLoading] = (false)
   const { review_id, category } = useParams();
+  const { logon, setLogon } = useContext(LogonContext);
 
   useEffect(() => {
     getReviewByReview_Id(review_id).then((review) => {
+      console.log(review, "review");
       setReview(review);
     });
   }, []);
-  
- 
-  // function goBack{
-  //   if(path===)
-  // }
 
   return (
     <div>
@@ -31,11 +29,17 @@ const SingleReview = (props) => {
               <h3>{review.title}</h3>
               <figure className="reviewbody">
                 <p>{review.review_body}</p>
-            {/* Back button not working on all reviews */}
+                {/* Back button not working on all reviews */}
                 {/* <Link to={`/reviews/${review.category}`}>
                 <button>Back</button>
                 </Link> */}
-                <button>Like</button><p>{review.votes}</p> 
+
+                <IncrementCount
+                  votes={review.votes}
+                  username={review.owner}
+                  review_id={review_id}
+                  review={review}
+                />
               </figure>
               <hr style={{ width: 800 }}></hr>
             </div>
